@@ -1,24 +1,28 @@
 var https = require('https');
 
-function getAndPrintHTMLChunks () {
+function getAndPrintHTML () {
 
+var fullData = ""
   var requestOptions = {
     host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
+    path: '/http-examples/step2.html'
   };
 
 https.get(requestOptions, function (response){
 
   response.on('data', function(data){
-    console.log(`${data}\n`)
+    fullData += data;
+    console.log(fullData)
   });
 
   response.on('end', function(){
     console.log("Response stream completed");
+
   });
 });
 
 
+
 }
 
-getAndPrintHTMLChunks();
+getAndPrintHTML();
